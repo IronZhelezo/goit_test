@@ -1,0 +1,39 @@
+.Pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.Button {
+    font-family: 'Archivo', sans-serif;
+    outline: none;
+    border: 0;
+    cursor: pointer;
+    min-width: 1.875rem;
+    height: 2.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: transparent;
+    font-weight: 600;
+    font-size: 1.125rem;
+}
+
+.Button:disabled {
+    color: inherit;
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.Button___prev {
+    width: 5.625rem;
+}
+
+.Button___next {
+    width: 4rem;
+}
+
+.Button___active {
+    border-bottom: 0.1875rem solid #65B79A;
+}
