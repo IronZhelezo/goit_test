@@ -8,7 +8,7 @@ import Error from '../components/Error';
 import Loading from '../components/Loading';
 
 const GitHubSearh = () => {
-    const [searchText, setSearchText] = useState('');
+    const [searchText, setSearchText] = useState('react');
     const [debounced, setDebounced] = useState('');
     const [page, setPage] = useState(1);
     const perPage = 3;
@@ -27,11 +27,14 @@ const GitHubSearh = () => {
     }, [searchText]);
 
     const isListVisible = !isLoading && !isError && !!(debounced && data?.items?.length);
+    const isNothingFound = !isLoading && !isError && !!(debounced && !data?.items?.length);
+    const isErrorShowing = isError || isNothingFound;
 
     return (
         <div className={styles.page}>
             <input
                 onChange={({ target: { value } }) => setSearchText(value)}
+                defaultValue={searchText}
                 className={styles.input}
                 placeholder="Search"
             />
@@ -46,7 +49,7 @@ const GitHubSearh = () => {
                     setPage={setPage}
                 />
             )}
-            {isError && <Error refetch={refetch} />}
+            {isErrorShowing && <Error refetch={refetch} isNothingFound={isNothingFound} />}
             {isLoading && <Loading />}
         </div>
     );
