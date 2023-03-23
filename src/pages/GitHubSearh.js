@@ -11,7 +11,7 @@ const GitHubSearh = () => {
     const [searchText, setSearchText] = useState('react');
     const [debounced, setDebounced] = useState('');
     const [page, setPage] = useState(1);
-    const perPage = 3;
+    const perPage = 20;
     const { isLoading, isError, data, refetch } =
         useSearchReposQuery(
             { q: debounced, page, perPage },
